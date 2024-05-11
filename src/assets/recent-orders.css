@@ -1,0 +1,47 @@
+main .recent-orders{
+    margin-top: 1.4rem;
+}
+
+main .recent-orders h2{
+    margin-bottom: 0.8rem;
+}
+
+main .recent-orders table{
+    background-color: var(--color-white);
+    width: 100%;
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    -webkit-border-radius: var(--card-border-radius);
+    -moz-border-radius: var(--card-border-radius);
+    -ms-border-radius: var(--card-border-radius);
+    -o-border-radius: var(--card-border-radius);
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+
+main .recent-orders table:hover{
+    box-shadow: none;
+}
+
+main table tbody td{
+    height: 2.8rem;
+    border-bottom: 1px solird var(--color-light);
+    color: var(--color-dark-variant)
+}
+
+main table tbody tr:last-child{
+    border: none;
+}
+
+main .recent-orders a{
+    text-align: center;
+    display: block;
+    margin: 1rem auto;
+    color: var(--color-primary);
+
+}

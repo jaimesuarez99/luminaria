@@ -1,0 +1,189 @@
+a {
+  color: var(--color-text);
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.container {
+  display: grid;
+  width: 96%;
+  height: 100dvh;
+  margin: 0 auto;
+  gap: 1rem;
+  grid-template-columns: 12rem auto;
+  grid-template-rows: 4.7rem auto;
+  overflow: hidden;
+}
+
+aside {
+  grid-row: 1/2;
+  height: 100dvh;
+  /* height: 100lvh;
+  height: 100svh; */
+}
+
+aside .toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.4rem;
+}
+
+aside .toggle .logo {
+  display: flex;
+  gap: 0.5rem;
+}
+
+aside .toggle .logo img {
+  width: 2.4rem;
+  height: 2rem;
+}
+
+aside .toggle .close {
+  padding-right: 1rem;
+  display: none;
+}
+
+aside .sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  box-shadow: var(--box-shadow);
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  height: 88dvh;
+  /* height: 88lvh;
+  height: 88svh; */
+  position: relative;
+  top: 1.5rem;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+
+aside .sidebar h3 {
+  font-size: 0.87rem;
+}
+aside .logo h2 {
+  font-size: 1.4rem;
+}
+
+aside .sidebar:hover {
+  box-shadow: none;
+}
+
+aside .sidebar a {
+  display: flex;
+  align-items: center;
+  color: var(--color-info-dark); /*Aquicolordelosbotonesdelabarralateral*/
+  height: 3.7rem;
+  gap: 1rem;
+  position: relative;
+  margin-left: 2rem;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease; /*asq*/
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+}
+
+aside .sidebar a span {
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+
+aside .sidebar a:last-child {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+}
+
+aside .sidebar a.router-link-exact-active {
+  width: 100%;
+  color: var(--color-primary);
+  background-color: var(--color-light); /*Colordefondodelelementoactivoenaside*/
+  margin-left: 0;
+}
+
+aside .sidebar a.router-link-exact-active:first-child {
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+aside .sidebar a.router-link-exact-active::before {
+  content: "";
+  height: 18px;
+  background-color: var(--color-primary);
+  border: 3px solid;
+}
+
+aside .sidebar a.router-link-exact-active span {
+  color: var(--color-primary);
+  margin-left: calc(1rem - 3px);
+}
+
+aside .sidebar a:hover {
+  color: var(--color-primary);
+}
+
+aside .sidebar a:hover span {
+  margin-left: 0.6rem;
+}
+
+aside .sidebar .message-count {
+  background-color: var(--color-danger);
+  padding: 2px 6px;
+  color: var(--color-white);
+  font-size: 0.8rem;
+  border-radius: var(--border-radius-2);
+  -webkit-border-radius: var(--border-radius-2);
+  -moz-border-radius: var(--border-radius-2);
+  -ms-border-radius: var(--border-radius-2);
+  -o-border-radius: var(--border-radius-2);
+}
+
+.back-drop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: none;
+  animation: backdrop 0.5s ease forwards;
+  -webkit-animation: backdrop 0.5s ease forwards;
+}
+
+@keyframes backdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.back-drop .backdrop-button {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.424);
+  z-index: 1;
+}
+
+.aside-fixed {
+  display: block;
+}

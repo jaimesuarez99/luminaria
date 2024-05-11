@@ -1,0 +1,162 @@
+@media screen and (max-width: 1280px) {
+  .container {
+    width: 95%;
+    grid-template-columns: 6rem auto;
+    grid-template-rows: 4.7rem auto;
+  }
+
+  aside .toggle {
+    justify-content: center;
+  }
+
+  aside .logo h2 {
+    display: none;
+  }
+
+  aside .sidebar h3 {
+    display: none;
+  }
+
+  aside .sidebar a {
+    width: 100%;
+    margin: 0;
+    justify-content: center;
+  }
+
+  aside .sidebar .message-count {
+    position: absolute;
+    right: 20%;
+    bottom: 20%;
+  }
+
+  aside .sidebar a:last-child {
+    position: relative;
+    margin-top: 1.8rem;
+  }
+
+  aside .sidebar a.router-link-exact-active span {
+    margin-left: 0;
+  }
+
+  aside .sidebar a.router-link-exact-active::before {
+    position: absolute;
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    grid-template-columns: 0 1fr;
+    padding: 0 var(--padding-1);
+    column-gap: 0;
+  }
+
+  aside {
+    position: fixed;
+    background-color: var(--color-white);
+    width: 15rem;
+    z-index: 3;
+    box-shadow: 1rem 3rem 4rem var(--color-light);
+    height: 100vh;
+    left: -100%;
+    display: none;
+    animation: showMenu 0.4s ease forwards;
+    -webkit-animation: showMenu 0.4s ease forwards;
+  }
+
+  @keyframes showMenu {
+    to {
+      left: 0;
+    }
+  }
+
+  aside .logo {
+    margin-left: 1rem;
+  }
+
+  aside .logo h2 {
+    display: inline;
+  }
+
+  aside .sidebar h3 {
+    display: inline;
+  }
+
+  aside .sidebar a {
+    width: 100%;
+    height: 3.4rem;
+    margin-left: 2rem;
+    justify-content: unset;
+  }
+
+  aside .sidebar a:last-child {
+    position: absolute;
+    bottom: 5rem;
+  }
+
+  aside .toggle {
+    justify-content: space-between;
+  }
+
+  aside .toggle .close {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  aside .sidebar a.router-link-exact-active span {
+    margin-left: calc(1rem - 3px);
+  }
+
+  aside .sidebar a.router-link-exact-active::before {
+    position: relative;
+  }
+
+  main {
+    margin-top: 8rem;
+    padding: 0 1rem;
+    grid-column: 1;
+  }
+
+  main .new-users .user-list .user {
+    flex-basis: 35%;
+  }
+
+  main .recent-orders {
+    position: relative;
+    margin: 3rem 0 0 0;
+    width: 100%;
+  }
+
+  main .recent-orders table {
+    width: 100%;
+    margin: 0;
+  }
+
+  .header .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    background-color: var(--color-white);
+    padding: 0 var(--padding-1);
+    height: 4.6rem;
+    width: 100%;
+    z-index: 2;
+    box-shadow: 0 1rem 1rem var(--color-light);
+    margin: 0;
+  }
+
+  .header .nav button {
+    display: inline-block;
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--color-dark);
+    position: absolute;
+    left: 1rem;
+  }
+
+  .header .nav button span {
+    font-size: 2rem;
+  }
+}

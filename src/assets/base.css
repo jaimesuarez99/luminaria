@@ -1,0 +1,144 @@
+:root {
+  --color-text: #0d0d0d;
+  --color-background: #f6f6f9;
+  --color-primary: #e17815;
+  --color-secondary: #1675e2;
+  --color-accent: #0611b7;
+  --color-danger: #c53639;
+  --color-success: #85b33b;
+  --color-warning: #bfb91b;
+  --color-white: #fff;
+  --color-info-dark: #7d81a1;
+  --color-dark: #363949;
+  --color-light: rgba(132, 139, 200, 0.18);
+  --color-dark-variant: #676a83;
+
+  --card-border-radius: 2rem;
+  --border-radius-1: 0.4rem;
+  --border-radius-2: 1.2rem;
+
+  --card-padding: 1.8rem;
+  --padding-1: 1.2rem;
+
+  --box-shadow: 0 2rem 3rem var(--color-light);
+
+  /*Log-in vars*/
+  --color-gradient: linear-gradient(
+    to bottom right,
+    var(--persian-blue-50),
+    var(--persian-blue-100)
+  );
+  --color-gradient-2: linear-gradient(to right, #ff9b3d, var(--color-primary));
+  --login-border-radius: 30px;
+  --login-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  --login-light-box-shadow: 0 5px 15px rgba(255, 255, 255, 0.25);
+  --login-fontsize: 0.875rem;
+  --login-button-border-radius: 8px;
+
+  /*Log-in vars --End*/
+
+  /* Loader Variables*/
+  --inner: 30px;
+  --border: 6px;
+  --spacing: 1px;
+  /*Loaders End Var*/
+
+  --persian-blue-50: #f5faff;
+  --persian-blue-100: #d6eaff;
+  --persian-blue-200: #b7dbff;
+  --persian-blue-300: #85c6ff;
+  --persian-blue-400: #4ba6ff;
+  --persian-blue-500: #227fff;
+  --persian-blue-600: #0a5dff;
+  --persian-blue-700: #0446f1;
+  --persian-blue-800: #0b3bcb;
+  --persian-blue-900: #103598;
+  --persian-blue-950: #0f225c;
+}
+
+:root[data-theme="dark"] {
+  --color-text: #f2f2f2;
+  --color-background: #000000;
+  --color-primary: #e17815;
+  --color-secondary: #1675e2;
+  --color-accent: #0611b7;
+  --color-danger: #ea4144;
+  --color-success: #b1ee50;
+  --color-warning: #fff700;
+  --color-white: #1d1d1d;
+  --color-info-dark: #7d8da1;
+  --color-dark: #ededdf;
+  --color-light: rgba(151, 151, 151, 0.18);
+  --color-dark-variant: #a3bdcc;
+
+  --card-border-radius: 2rem;
+  --border-radius-1: 0.4rem;
+  --border-radius-2: 1.2rem;
+
+  --card-padding: 1.8rem;
+  --padding-1: 1.2rem;
+
+  --box-shadow: 0 2rem 3rem var(--color-light);
+
+  /*Log-in vars*/
+  --color-gradient: linear-gradient(
+    to bottom right,
+    var(--persian-blue-50),
+    var(--persian-blue-100)
+  );
+  --color-gradient-2: linear-gradient(to right, #ff9b3d, var(--color-primary));
+  --login-border-radius: 30px;
+  --login-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  --login-light-box-shadow: 0 5px 15px rgba(255, 255, 255, 0.25);
+  --login-fontsize: 0.875rem;
+  --login-button-border-radius: 8px;
+  /*Log-in vars --End*/
+}
+
+* {
+  box-sizing: border-box;
+
+  text-decoration: none;
+}
+
+body,
+html {
+  font-family: "Rethink Sans";
+  font-weight: 400;
+
+  /* font-size: 0.88rem; */
+  user-select: none;
+  overflow-x: hidden;
+  /* overflow-y: hidden; */
+  color: var(--color-dark);
+  background-color: var(--color-background);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Rethink Sans";
+  font-weight: 700;
+}
+
+.text-muted {
+  color: var(--color-info-dark);
+}
+
+.primary {
+  color: var(--color-primary);
+}
+
+.danger {
+  color: var(--color-danger);
+}
+
+.success {
+  color: var(--color-success);
+}
+
+.warning {
+  color: var(--color-warning);
+}
