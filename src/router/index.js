@@ -1,12 +1,12 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 import homeView from '/Users/clasealphasas/Documents/Luminarias/src/views/HomeView.vue';
 import LogIn from '../views/log-in.vue';
 import Home from '@/views/Home.vue';
 import AnalyticsByZone from '@/views/AnalyticsByZone.vue';
 import GeneralAnalytics from '@/views/GeneralAnalytics.vue';
-import General from '@/views/General.vue'
-import Map from '@/views/Map.vue'
-import Reports from '@/views/Reports.vue'
+import General from '@/views/General.vue';
+import Map from '@/views/Map.vue';
+import Reports from '@/views/Reports.vue';
 
 import {
   checkToken
