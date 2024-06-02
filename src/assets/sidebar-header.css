@@ -1,0 +1,40 @@
+.toggle .logo img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.toggle .logo h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--color-secondary);
+  display: flex;
+
+  p {
+    color: var(--color-text);
+  }
+}
+
+.toggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 1.4rem;
+}
+
+.toggle .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.toggle .logo img {
+  width: 2.4rem;
+  height: 2rem;
+}
+
+.toggle .close {
+  padding-right: 1rem;
+  display: none;
+}

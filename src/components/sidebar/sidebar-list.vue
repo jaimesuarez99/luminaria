@@ -1,23 +1,55 @@
 <template>
-    <sidebarItem v-for="item in items" :key="item.to" :to="item.to" :name="item.name" :symbolName="item.symbol" :messageCount="item.messageCount"/>
+  <template v-for="item in items" :key="item.to">
+    <SidebarDropdown
+      v-if="item.items?.length > 0"
+      :items="item.items"
+      :name="item.name"
+      :symbolName="item.symbol"
+    />
+    <sidebarItem
+      v-else
+      :to="item.to"
+      :name="item.name"
+      :symbolName="item.symbol"
+      :messageCount="item.messageCount"
+    />
+  </template>
 </template>
 
 <script setup>
-import sidebarItem from './sidebar-item.vue';
-import { ref } from 'vue';
-const items = ref([
-{name: 'Dashboard',symbol:'dashboard', to:'/'},
-{name:'Users', symbol:'person_outline', to:'/1'},
-{name:'Analytics', symbol:'insights', to:'/2'},
-{name:'Tickets', symbol:'mail_outline', to:'/3', messageCount:{isActive:true,count:27}},
-{name:'Sale List',symbol:'inventory', to:'/4'},
-{name:'Reports', symbol:'inventory_2', to:'/5'},
-{name:'Settings', symbol:'settings', to:'/6'},
-{name:'New Login', symbol:'add', to:'/7'},
-{name:'Log Out',symbol:'logout', to:'/8'}]);
+import sidebarItem from "./sidebar-item.vue";
+import SidebarDropdown from "./sidebar-dropdown.vue";
+import { getZonesList, getDevicesByType } from "@/utils/getSalentoDevices";
 
+import { ref, onMounted } from "vue";
+const items = ref([
+  { name: "Dashboard", symbol: "dashboard", to: "/" },
+  {
+    name: "Proyectos",
+    symbol: "event_list",
+    to: "/fsa",
+    items: [],
+  },
+  { name: "Log Out", symbol: "logout", to: "/8" },
+]);
+
+onMounted(async () => {
+  await getZones();
+});
+
+const getZones = async () => {
+  const lmZoneList = await getZonesList();
+  assignItems(lmZoneList, 1);
+};
+
+const assignItems = (elements, assignIndex) => {
+  elements.forEach((element) => {
+    items.value[assignIndex].items.push({
+      name: element.name,
+      to: `/project/${element.zone_id}/${element.name}/`,
+    });
+  });
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

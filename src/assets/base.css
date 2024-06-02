@@ -10,7 +10,7 @@
   --color-white: #fff;
   --color-info-dark: #7d81a1;
   --color-dark: #363949;
-  --color-light: rgba(132, 139, 200, 0.18);
+  --color-light: #848bc82e;
   --color-dark-variant: #676a83;
 
   --card-border-radius: 2rem;
@@ -101,11 +101,15 @@
   text-decoration: none;
 }
 
+#app {
+  height: inherit;
+}
+
 body,
 html {
   font-family: "Rethink Sans";
   font-weight: 400;
-
+  height: 100vh;
   /* font-size: 0.88rem; */
   user-select: none;
   overflow-x: hidden;

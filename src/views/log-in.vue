@@ -1,7 +1,7 @@
 <template>
   <div class="log-in-body">
     <div class="login-container" id="login-container">
-      <loader v-if="loaderController" />
+      <loader v-if="loaderController" style="z-index: 999999" />
       <div class="form-container sign-up">
         <form>
           <h1>Crear Cuenta</h1>
@@ -106,16 +106,19 @@
 import { ref, reactive } from "vue";
 import loader from "@/components/loader/loader.vue";
 import { getToken } from "@/utils/getSalentoDevices";
+import { useRouter } from "vue-router";
 
-const user = defineModel("user");
-const password = defineModel("password");
+const router = useRouter();
+const user = ref("jbenjumea");
+const password = ref("CelsaParadox2022*");
 const loaderController = ref(false);
 const login = async () => {
   try {
     loaderController.value = true;
     const userToken = await getToken(user.value, password.value, "pdxeng");
     if (userToken != null) {
-      document.cookie = `Authorization=Bearer ${userToken}; expires=${getExpTime()}; path=/; secure; httponly`;
+      sessionStorage.setItem("authToken", userToken);
+      router.push({ path: "/home" });
       return;
     }
     throw new Error("Token Nullo");
@@ -124,12 +127,6 @@ const login = async () => {
   } finally {
     loaderController.value = false;
   }
-};
-
-const getExpTime = () => {
-  var now = new Date();
-  now.setTime(now.getTime() + 3600 * 1000);
-  return now.toUTCString();
 };
 </script>
 

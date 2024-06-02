@@ -1,13 +1,5 @@
 <template>
-  <RouterView name="Login" />
-
-  <div class="container">
-    <RouterView name="sidebarMain" />
-    <RouterView name="headerTop" />
-    <main>
-      <RouterView />
-    </main>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script setup></script>

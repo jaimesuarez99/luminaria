@@ -5,11 +5,12 @@
     grid-template-rows: 4.7rem auto;
   }
 
-  aside .toggle {
+  .toggle {
     justify-content: center;
+    margin-bottom: 1rem;
   }
 
-  aside .logo h2 {
+  .toggle .logo h2 {
     display: none;
   }
 
@@ -47,7 +48,7 @@
 @media screen and (max-width: 768px) {
   .container {
     width: 100%;
-    grid-template-columns: 0 1fr;
+    grid-template-columns: 1fr;
     padding: 0 var(--padding-1);
     column-gap: 0;
   }
@@ -71,11 +72,11 @@
     }
   }
 
-  aside .logo {
+  .toggle .logo {
     margin-left: 1rem;
   }
 
-  aside .logo h2 {
+  .toggle .logo h2 {
     display: inline;
   }
 
@@ -95,11 +96,11 @@
     bottom: 5rem;
   }
 
-  aside .toggle {
+  .toggle {
     justify-content: space-between;
   }
 
-  aside .toggle .close {
+  .toggle .close {
     display: inline-block;
     cursor: pointer;
   }
@@ -114,23 +115,8 @@
 
   main {
     margin-top: 8rem;
-    padding: 0 1rem;
-    grid-column: 1;
-  }
-
-  main .new-users .user-list .user {
-    flex-basis: 35%;
-  }
-
-  main .recent-orders {
-    position: relative;
-    margin: 3rem 0 0 0;
-    width: 100%;
-  }
-
-  main .recent-orders table {
-    width: 100%;
-    margin: 0;
+    /* padding: 0 1rem; */
+    grid-column: inherit !important;
   }
 
   .header .nav {
