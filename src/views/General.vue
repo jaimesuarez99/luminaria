@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-2 gap-4">
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
     <div class="flex flex-col gap-5">
       <ProgressBarAnTemplate :data="staticData[0]">
         <template #title> Disponibilidad del servicio </template>
@@ -7,11 +7,11 @@
       <ProgressBarAnTemplate :data="staticData[1]">
         <template #title> Luminarias por atender </template>
       </ProgressBarAnTemplate>
-      <ProgressBarAnTemplate :data="staticData[2]">
-        <template #title> Tasa de fallas </template>
-      </ProgressBarAnTemplate>
     </div>
     <div><PieChartTemplate></PieChartTemplate></div>
+    <ProgressBarAnTemplate :data="staticData[2]" class="md:col-span-2">
+      <template #title> Tasa de fallas </template>
+    </ProgressBarAnTemplate>
   </div>
 </template>
 

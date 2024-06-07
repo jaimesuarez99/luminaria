@@ -1,25 +1,31 @@
 <template>
-  <a class="dropdown-btn" @click="() => (dpActive = !dpActive)" v-if="hasName">
-    <span class="material-symbols-outlined">
-      {{ (props, symbolName) }}
-    </span>
-    <h3>{{ props.name }}</h3>
-    <i
-      class="fa fa-caret-down origin-center transition-all"
-      :class="{ 'rotate-0': dpActive, 'rotate-[-90deg]': !dpActive }"
-    ></i>
-  </a>
-  <transition name="fade">
-    <div class="dropdown-container" v-show="dpActive && hasItems">
-      <RouterLink
-        v-for="(item, index) in props.items"
-        :key="index"
-        :to="item.to"
-      >
-        <h3>{{ item.name }}</h3>
-      </RouterLink>
-    </div>
-  </transition>
+  <div class="relative">
+    <a
+      class="main-item dropdown-btn"
+      @click="() => (dpActive = !dpActive)"
+      v-if="hasName"
+    >
+      <span class="material-symbols-outlined">
+        {{ (props, symbolName) }}
+      </span>
+      <h3>{{ props.name }}</h3>
+      <i
+        class="fa fa-caret-down origin-center transition-all"
+        :class="{ 'rotate-0': dpActive, 'rotate-[-90deg]': !dpActive }"
+      ></i>
+    </a>
+    <transition name="fade">
+      <div class="dropdown-container" v-show="dpActive && hasItems">
+        <RouterLink
+          v-for="(item, index) in props.items"
+          :key="index"
+          :to="item.to"
+        >
+          <h3>{{ item.name }}</h3>
+        </RouterLink>
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script setup>

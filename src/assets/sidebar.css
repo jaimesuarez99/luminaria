@@ -3,10 +3,11 @@ a {
 }
 
 .container {
+  max-width: none !important;
   display: grid;
-  width: 96%;
+  width: unset !important;
   height: 100dvh;
-  margin: 0 auto;
+  margin: 0 2rem;
   gap: 1rem;
   grid-template-columns: 12rem auto;
   grid-template-rows: 4.7rem auto;
@@ -14,7 +15,7 @@ a {
 }
 
 aside {
-  /* grid-row: 1/2; */
+  grid-row: 1/2;
   height: 100dvh;
   /* height: 100lvh;
   height: 100svh; */

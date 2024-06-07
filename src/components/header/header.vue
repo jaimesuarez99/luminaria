@@ -24,10 +24,10 @@
           <span class="material-symbols-outlined"> lab_profile </span>
         </router-link>
       </div>
-      <button class="menu-btn" id="menu-btn">
+      <button class="menu-btn" id="menu-btn" @click="opeSideBar">
         <span class="material-symbols-outlined"> menu </span>
       </button>
-      <div class="dark-mode">
+      <div class="dark-mode" @click="changeColrMode">
         <span class="material-symbols-outlined active"> light_mode </span>
         <span class="material-symbols-outlined"> dark_mode </span>
       </div>
@@ -47,6 +47,25 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const opeSideBar = () => {
+  const sideMenu = document.querySelector("aside");
+  const backDrop = document.getElementById("backdrop");
+  sideMenu.classList.add("aside-fixed");
+  backDrop.style.display = "block";
+};
+const changeColrMode = () => {
+  const darkmode = document.querySelector(".dark-mode");
+  const root = document.documentElement;
+
+  if (root.getAttribute("data-theme") === "dark") {
+    root.removeAttribute("data-theme");
+  } else {
+    root.setAttribute("data-theme", "dark");
+  }
+  darkmode.querySelector("span:nth-child(1)").classList.toggle("active");
+  darkmode.querySelector("span:nth-child(2)").classList.toggle("active");
+};
+</script>
 
 <style lang="scss" scoped></style>

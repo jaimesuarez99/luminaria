@@ -9,12 +9,19 @@
         PTA
       </h2>
     </div>
-    <div class="close" id="menu-close-btn">
+    <div class="close" id="menu-close-btn" @click="closeSideBar">
       <span class="material-symbols-outlined"> close </span>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const closeSideBar = () => {
+  const sideMenu = document.querySelector("aside");
+  const backDrop = document.getElementById("backdrop");
+  sideMenu.classList.remove("aside-fixed");
+  backDrop.style.display = "none";
+};
+</script>
 
 <style lang="scss" scoped></style>

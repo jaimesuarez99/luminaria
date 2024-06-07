@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <sidebarHeader />
+    <!-- <sidebarHeader /> -->
     <customHeader />
     <main>
       <RouterView />
@@ -11,7 +11,7 @@
 
 <script setup>
 import sidebarMain from "../components/sidebar/sidebar-main.vue";
-import sidebarHeader from "../components/sidebar/sidebar-header.vue";
+
 import customHeader from "../components/header/header.vue";
 </script>
 
