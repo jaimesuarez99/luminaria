@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import homeView from '/Users/clasealphasas/Documents/Luminarias/src/views/HomeView.vue';
+import homeView from '@/views/HomeView.vue';
 import LogIn from '../views/log-in.vue';
 import Home from '@/views/Home.vue';
 import AnalyticsByZone from '@/views/AnalyticsByZone.vue';

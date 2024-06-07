@@ -11,6 +11,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@google/markerclusterer": "^2.0.9",
     "apexcharts": "^3.49.1",
     "autoprefixer": "^10.4.19",
     "axios": "^1.6.8",
@@ -19,6 +20,7 @@
     "primevue": "^3.52.0",
     "vite-plugin-mkcert": "^1.17.5",
     "vue": "^3.4.27",
+    "vue-google-maps-community-fork": "^0.3.1",
     "vue-router": "^4.2.5",
     "vue3-apexcharts": "^1.5.3"
   },

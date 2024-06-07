@@ -1,8 +1,10 @@
 import axios from "axios";
+const baseURL = 'https://celsa.pdxeng.ch:8000/cms/api/v1.0'
+
 
 export async function getToken(username, password, cmsUid) {
     try {
-        const url = 'https://celsa.pdxeng.ch:8000/cms/api/v1.0/token';
+        const url = `${baseURL}/token`;
         const requestBody = {
             username: username,
             password: password,
@@ -23,7 +25,7 @@ export async function getToken(username, password, cmsUid) {
 export async function checkToken() {
     try {
         const token = sessionStorage.getItem('authToken');
-        const url = `https://celsa.pdxeng.ch:8000/cms/api/v1.0/token?token=${token}`;
+        const url = `${baseURL}/token?token=${token}`;
         const headers = {
             Authorization: `Bearer ${token}`
         };
@@ -42,7 +44,7 @@ export async function checkToken() {
 export async function getZonesList() {
     try {
         const token = sessionStorage.getItem('authToken');
-        const url = 'https://celsa.pdxeng.ch:8000/cms/api/v1.0/zones';
+        const url = `${baseURL}/zones`;
         const headers = {
             Authorization: `Bearer ${token}`
         };
@@ -60,11 +62,28 @@ export async function getZonesList() {
     }
 }
 
+export async function getZoneInfo(zone_id) {
+    try {
+      const token = sessionStorage.getItem('authToken');
+      const url = `${baseURL}/zones/${zone_id}`;
+      const headers = {
+        Authorization: `Bearer ${token}`
+      };
+  
+      const response = await axios.get(url, { headers });
+      const zoneInfo = response.data.zone;
+      console.log(zoneInfo, zoneInfo.center_lat, zoneInfo.center_lon);
+      return zoneInfo
+    } catch (error) {
+      console.error(`Error executing getZoneInfo: ${error}`);
+    }
+};
+
 export async function getDevicesByType(device_family_id, zone_id) {
     try {
         const token = sessionStorage.getItem('authToken');
 
-        const url = `https://celsa.pdxeng.ch:8000/cms/api/v1.0/zones/${zone_id}/devices`;
+        const url = `${baseURL}/zones/${zone_id}/devices`;
         const headers = {
             Authorization: `Bearer ${token}`
         };
@@ -88,7 +107,7 @@ export async function getDeviceInfo(device_uid) {
     try {
         const token = sessionStorage.getItem('authToken');
 
-        const url = `https://celsa.pdxeng.ch:8000/cms/api/v1.0/data/last/devices/${device_uid}/objects?page=1`;
+        const url = `${baseURL}/data/last/devices/${device_uid}/objects?page=1`;
         console.log(url);
         const headers = {
             Authorization: `Bearer ${token}`
