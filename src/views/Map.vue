@@ -29,7 +29,10 @@
             placeholder="Filtros..."
             class="w-full"
           />
-          <devicesList :zone-id="$route.params.id" />
+          <devicesList
+            :zone-id="$route.params.id"
+            @on-lm-clicked="handleLmClicked"
+          />
           <mapLegend />
         </div>
       </template>
@@ -49,6 +52,11 @@ const option = ref([
   { label: "Luminarias por atender", value: "toServe" },
   { label: "Programadas para ser atendidas", value: "served" },
 ]);
+
+const handleLmClicked = (event) => {
+  console.log(event);
+  return event;
+};
 
 const selectedOption = ref(null);
 </script>

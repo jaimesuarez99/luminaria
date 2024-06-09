@@ -3,6 +3,7 @@
     <ul class="list-none">
       <li
         v-for="(device, index) in deviceList"
+        @click="handleClick(device)"
         :key="index"
         class="flex gap-2 m-1 p-1 rounded-sm hover:bg-light cursor-pointer"
       >
@@ -35,6 +36,13 @@ const props = defineProps({
 const handleDevices = async () => {
   deviceList.value = await getDevicesByType(undefined, props.zoneId);
 };
+
+const handleClick = (device) => {
+  const data = { gps_lat: device.gps_lat, gps_lon: device.gps_lon };
+  emit("onLmClicked", data);
+};
+
+const emit = defineEmits(["onLmClicked"]);
 </script>
 
 <style scoped></style>
