@@ -26,10 +26,12 @@
 
 .header .nav .btn-group:hover {
   background-color: var(--color-light);
+  color: var(--color-primary);
 }
 
 .header .nav .btn-group.router-link-exact-active {
   background-color: var(--color-light);
+  color: var(--color-primary);
 }
 
 .header .dark-mode {

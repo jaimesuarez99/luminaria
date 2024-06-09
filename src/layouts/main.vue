@@ -11,7 +11,6 @@
 
 <script setup>
 import sidebarMain from "../components/sidebar/sidebar-main.vue";
-
 import customHeader from "../components/header/header.vue";
 </script>
 

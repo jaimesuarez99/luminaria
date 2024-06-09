@@ -72,8 +72,9 @@
   .container {
     width: 100%;
     grid-template-columns: 1fr;
-    padding: 0 var(--padding-1);
+    /* padding: 0 var(--padding-1); */
     column-gap: 0;
+    margin: 0;
   }
 
   aside {
@@ -110,13 +111,13 @@
   aside .sidebar a {
     width: 100%;
     height: 3.4rem;
-    margin-left: 2rem;
+    /* margin-left: 2rem; */
     justify-content: unset;
   }
 
   aside .sidebar a.main-item:last-child {
     position: absolute;
-    bottom: 5rem;
+    bottom: 0;
   }
 
   .toggle {
@@ -145,7 +146,7 @@
     width: unset;
   }
   aside .sidebar .dropdown-container a {
-    padding: unset;
+    padding: 2rem;
   }
 
   aside .sidebar .dropdown-container a h3 {

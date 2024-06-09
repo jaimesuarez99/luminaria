@@ -38,7 +38,26 @@ export async function checkToken() {
         return false;
     }
 }
-
+export async function getZonesListTreeView() {
+    try {
+        const token = sessionStorage.getItem('authToken');
+        const url = 'https://celsa.pdxeng.ch:8000/cms/api/v1.0/zones/treeView';
+        const headers = {
+            Authorization: `Bearer ${token}`
+        };
+        const response = await axios.get(url, { headers });
+        const zonesList = response.data.zones_treeview.children.map(zone => ({
+            zone_id: zone.zone_id,
+            name: zone.name,
+            // Add more properties here as needed
+        }));
+        console.log('Zones list:', zonesList);
+        return zonesList;
+    } catch (error) {
+        console.error(`Error executing getZonesList: ${error}`);
+        return error;
+    }
+}
 export async function getZonesList() {
     try {
         const token = sessionStorage.getItem('authToken');
@@ -60,7 +79,7 @@ export async function getZonesList() {
     }
 }
 
-export async function getDevicesByType(device_family_id, zone_id) {
+export async function getDevicesByType(device_family_id = 1, zone_id = 1) {
     try {
         const token = sessionStorage.getItem('authToken');
 

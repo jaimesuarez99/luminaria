@@ -1,14 +1,14 @@
 :root {
   --color-text: #0d0d0d;
   --color-background: #f6f6f9;
-  --color-primary: #e17815;
-  --color-secondary: #1675e2;
+  --color-primary: #0e488b;
+  --color-secondary: #166fd4;
   --color-accent: #0611b7;
   --color-danger: #c53639;
   --color-success: #85b33b;
   --color-warning: #bfb91b;
   --color-white: #fff;
-  --color-info-dark: #7d81a1;
+  --color-info-dark: #5f6173;
   --color-dark: #363949;
   --color-light: #848bc82e;
   --color-dark-variant: #676a83;
@@ -99,6 +99,32 @@
   box-sizing: border-box;
 
   text-decoration: none;
+}
+/* Para navegadores basados en WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra de desplazamiento vertical */
+  height: 8px; /* Altura de la barra de desplazamiento horizontal */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Fondo del track (pista) de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color del pulgar (thumb) de la barra de desplazamiento */
+  border-radius: 10px; /* Bordes redondeados */
+  border: 2px solid transparent; /* Borde transparente para un poco de espacio alrededor */
+  background-clip: padding-box; /* Clip de fondo */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color al pasar el cursor por el pulgar */
+}
+
+/* Para Firefox */
+html {
+  scrollbar-width: thin; /* Ancho fino */
+  scrollbar-color: #888 transparent; /* Color del pulgar y del track */
 }
 
 #app {

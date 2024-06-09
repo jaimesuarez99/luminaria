@@ -33,7 +33,7 @@
       </div>
       <div class="profile">
         <div class="info">
-          <p>Hey,<b> Tim</b></p>
+          <p>Hey,<b> Sebastian</b></p>
           <smal class="text-muted">Admin</smal>
         </div>
         <div class="profile-photo">

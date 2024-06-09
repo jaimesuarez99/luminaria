@@ -19,7 +19,7 @@
 <script setup>
 import sidebarItem from "./sidebar-item.vue";
 import SidebarDropdown from "./sidebar-dropdown.vue";
-import { getZonesList, getDevicesByType } from "@/utils/getSalentoDevices";
+import { getZonesList, getZonesListTreeView } from "@/utils/getSalentoDevices";
 
 import { ref, onMounted } from "vue";
 const items = ref([
@@ -38,7 +38,7 @@ onMounted(async () => {
 });
 
 const getZones = async () => {
-  const lmZoneList = await getZonesList();
+  const lmZoneList = await getZonesListTreeView();
   assignItems(lmZoneList, 1);
 };
 

@@ -58,7 +58,7 @@ aside .sidebar a {
   height: 3.7rem;
   gap: 1rem;
   position: relative;
-  margin-left: 2rem;
+  padding-left: 2rem;
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -102,15 +102,21 @@ aside .sidebar a span {
 
 aside .sidebar a.main-item:last-child {
   position: absolute;
-  bottom: 2rem;
+  bottom: 0;
   width: 100%;
+  background-color: var(--color-white);
+  border-radius: 0 0 15px 15px;
+  -webkit-border-radius: 0 0 15px 15px;
+  -moz-border-radius: 0 0 15px 15px;
+  -ms-border-radius: 0 0 15px 15px;
+  -o-border-radius: 0 0 15px 15px;
 }
 
 aside .sidebar a.router-link-active {
   width: 100%;
   color: var(--color-primary);
   background-color: var(--color-light); /*Colordefondodelelementoactivoenaside*/
-  margin-left: 0;
+  padding-left: 0;
 }
 
 aside .sidebar a.main-item.router-link-active:first-child {
@@ -127,7 +133,7 @@ aside .sidebar a.router-link-active::before {
 
 aside .sidebar a.router-link-active span {
   color: var(--color-primary);
-  margin-left: calc(1rem - 3px);
+  /* margin-left: calc(1rem - 3px); */
 }
 
 aside .sidebar a:hover {
