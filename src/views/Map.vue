@@ -23,7 +23,7 @@
             v-model="selectedOption"
             :options="option"
             optionLabel="label"
-            placeholder="Selecciona..."
+            placeholder="Filtros..."
             class="w-full"
           />
           <devicesList :zone-id="$route.params.id" />
