@@ -1,9 +1,14 @@
 <template>
   <div>
+    <select @change="zoomToLocation">
+      <option v-for="(location, index) in locations" :key="index" :value="index">
+        {{ location.name }}
+      </option>
+    </select>
     <GMapMap
       ref="mapRef"
       :center="center"
-      :zoom="15"
+      :zoom="zoom"
       :options="options"
       map-type-id="roadmap"
       style="width: 100%; height: 80vh"
@@ -44,9 +49,15 @@ export default {
     const route = useRoute();
     const mapRef = ref(null);
     const center = ref({ lat: 6.33732, lng: -75.55795 });
+    const zoom = ref(15); // Add zoom as a reactive reference
     const markers = ref([]);
     const selectedLight = ref(null);
     const infoCardStyle = ref({});
+    const locations = ref([
+      { name: "Location 1", lat: 4.639373, lng: -75.571208 },
+      { name: "Location 2", lat: 4.638856, lng: -75.570312 },
+      // Add more locations as needed
+    ]);
 
     const setupMap = async () => {
       console.log(route.params.id);
@@ -70,6 +81,12 @@ export default {
           icon: "/public/bulb.png",
         }));
       }
+
+      // IN CASE WE NEED TO UPDATE THE ZOOM VALUE
+      // const map = mapRef.value.$mapObject;
+      // map.addListener('zoom_changed', () => {
+      //   zoom.value = map.getZoom();
+      // });
     };
 
     const showLightInfo = async (marker) => {
@@ -105,6 +122,39 @@ export default {
       return label.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
     };
 
+    const zoomToLocation = (event) => {
+      const selectedIndex = event.target.value;
+      const selectedLocation = locations.value[selectedIndex];
+      if (selectedLocation) {
+        const map = mapRef.value.$mapObject;
+        smoothPanTo(map, selectedLocation, 20);
+      }
+    };
+
+    const smoothPanTo = (map, targetPosition, targetZoom) => {
+      const panDuration = 1000; // Pan duration in milliseconds
+      const startCenter = map.getCenter();
+      const startZoom = map.getZoom();
+      const start = performance.now();
+
+      const animate = (time) => {
+        const progress = (time - start) / panDuration;
+        if (progress < 1) {
+          const currentLat = startCenter.lat() + (targetPosition.lat - startCenter.lat()) * progress;
+          const currentLng = startCenter.lng() + (targetPosition.lng - startCenter.lng()) * progress;
+          const currentZoom = startZoom + (targetZoom - startZoom) * progress;
+          map.setCenter({ lat: currentLat, lng: currentLng });
+          map.setZoom(currentZoom);
+          requestAnimationFrame(animate);
+        } else {
+          map.setCenter(targetPosition);
+          map.setZoom(targetZoom);
+        }
+      };
+
+      requestAnimationFrame(animate);
+    };
+
     onMounted(() => {
       setupMap();
       const selectedZone = sessionStorage.getItem("zonesList");
@@ -113,11 +163,13 @@ export default {
 
     return {
       center,
+      zoom,
       markers,
       selectedLight,
       showLightInfo,
       formatLabel,
       infoCardStyle,
+      locations,
       options: {
         mapId: "ea4d36c80703bba4",
         zoomControl: true,
@@ -129,6 +181,7 @@ export default {
         fullscreenControl: true,
       },
       mapRef,
+      zoomToLocation,
     };
   },
 };
