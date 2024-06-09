@@ -47,5 +47,3 @@ const option = ref([
 
 const selectedOption = ref(null);
 </script>
-
-<style lang="scss" scoped></style>

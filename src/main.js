@@ -15,6 +15,7 @@ import Card from 'primevue/card';
 import Button from 'primevue/button';
 import Dropdown from 'primevue/dropdown';
 import ProgressBar from 'primevue/progressbar';
+import VueGoogleMaps from 'vue-google-maps-community-fork'
 
 import App from './App.vue'
 
@@ -24,9 +25,14 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(PrimeVue);
-app.use(router)
-app.use(VueApexCharts)
+app.use(router);
+app.use(VueApexCharts);
 
+app.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyBIabUI1KSokfaH7IMICXnOP4dQqdIbdtw',
+  },
+});
 app.component('Button', Button);
 app.component('Card', Card);
 app.component('Column', Column);

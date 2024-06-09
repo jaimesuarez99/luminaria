@@ -40,6 +40,8 @@ onMounted(async () => {
 const getZones = async () => {
   const lmZoneList = await getZonesListTreeView();
   assignItems(lmZoneList, 1);
+  sessionStorage.setItem('zonesList', lmZoneList);
+
 };
 
 const assignItems = (elements, assignIndex) => {
