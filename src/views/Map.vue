@@ -8,6 +8,9 @@
       <template #title>
         <h1><slot name="title">Mapa</slot></h1>
       </template>
+      <template #content>
+        <googleMap />
+      </template>
     </Card>
     <Card
       class="flex-auto max-w-[22rem]"
@@ -37,6 +40,8 @@
 <script setup>
 import devicesList from "@/components/devicesList.vue";
 import mapLegend from "@/components/mapLegend.vue";
+import googleMap from "@/components/googleMap.vue";
+
 import { ref } from "vue";
 
 const option = ref([
