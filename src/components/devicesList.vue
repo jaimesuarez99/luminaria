@@ -3,9 +3,10 @@
     <ul class="list-none">
       <li
         v-for="(device, index) in deviceList"
-        @click="handleClick(device)"
+        @click="handleClick(device, index)"
         :key="index"
         class="flex gap-2 m-1 p-1 rounded-sm hover:bg-light cursor-pointer"
+        :class="{ 'bg-light': selectedIndex === index }"
       >
         <span class="material-symbols-outlined text-md"> table_lamp </span>
         <p class="text-nowrap text-sm">
@@ -21,6 +22,7 @@ import { ref, onBeforeMount } from "vue";
 import { getDevicesByType } from "@/utils/getSalentoDevices";
 
 const deviceList = ref(null);
+const selectedIndex = ref(null);
 
 onBeforeMount(() => {
   handleDevices();
@@ -37,8 +39,9 @@ const handleDevices = async () => {
   deviceList.value = await getDevicesByType(undefined, props.zoneId);
 };
 
-const handleClick = (device) => {
-  const data = { gps_lat: device.gps_lat, gps_lon: device.gps_lon };
+const handleClick = (device, index) => {
+  selectedIndex.value = index;
+  const data = { lat: device.gps_lat, lng: device.gps_lon };
   emit("onLmClicked", data);
 };
 

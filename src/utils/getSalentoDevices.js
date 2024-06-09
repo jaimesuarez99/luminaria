@@ -91,7 +91,7 @@ export async function getZoneInfo(zone_id) {
 
         const response = await axios.get(url, { headers });
         const zoneInfo = response.data.zone;
-        console.log(zoneInfo, zoneInfo.center_lat, zoneInfo.center_lon);
+        console.log("zoneInfo:", zoneInfo, zoneInfo.center_lat, zoneInfo.center_lon);
         return zoneInfo
     } catch (error) {
         console.error(`Error executing getZoneInfo: ${error}`);

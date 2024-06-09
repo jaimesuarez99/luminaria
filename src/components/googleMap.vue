@@ -1,10 +1,5 @@
 <template>
   <div>
-    <select @change="zoomToLocation">
-      <option v-for="(location, index) in locations" :key="index" :value="index">
-        {{ location.name }}
-      </option>
-    </select>
     <GMapMap
       ref="mapRef"
       :center="center"
@@ -44,7 +39,8 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 
 export default {
-  name: "App",
+  name: "googleMap",
+  props: ["selectedLmCord"],
   setup() {
     const route = useRoute();
     const mapRef = ref(null);
@@ -53,11 +49,6 @@ export default {
     const markers = ref([]);
     const selectedLight = ref(null);
     const infoCardStyle = ref({});
-    const locations = ref([
-      { name: "Location 1", lat: 4.639373, lng: -75.571208 },
-      { name: "Location 2", lat: 4.638856, lng: -75.570312 },
-      // Add more locations as needed
-    ]);
 
     const setupMap = async () => {
       console.log(route.params.id);
@@ -75,10 +66,10 @@ export default {
           device_uid: device.device_uid,
           device_label: device.device_label,
           position: {
-            lat: parseFloat(device.assigned_lat),
-            lng: parseFloat(device.assigned_lon),
+            lat: parseFloat(device.gps_lat),
+            lng: parseFloat(device.gps_lon),
           },
-          icon: "/public/bulb.png",
+          icon: "/bulb.png",
         }));
       }
 
@@ -123,12 +114,8 @@ export default {
     };
 
     const zoomToLocation = (event) => {
-      const selectedIndex = event.target.value;
-      const selectedLocation = locations.value[selectedIndex];
-      if (selectedLocation) {
-        const map = mapRef.value.$mapObject;
-        smoothPanTo(map, selectedLocation, 20);
-      }
+      const map = mapRef.value.$mapObject;
+      smoothPanTo(map, event, 20);
     };
 
     const smoothPanTo = (map, targetPosition, targetZoom) => {
@@ -140,8 +127,12 @@ export default {
       const animate = (time) => {
         const progress = (time - start) / panDuration;
         if (progress < 1) {
-          const currentLat = startCenter.lat() + (targetPosition.lat - startCenter.lat()) * progress;
-          const currentLng = startCenter.lng() + (targetPosition.lng - startCenter.lng()) * progress;
+          const currentLat =
+            startCenter.lat() +
+            (targetPosition.lat - startCenter.lat()) * progress;
+          const currentLng =
+            startCenter.lng() +
+            (targetPosition.lng - startCenter.lng()) * progress;
           const currentZoom = startZoom + (targetZoom - startZoom) * progress;
           map.setCenter({ lat: currentLat, lng: currentLng });
           map.setZoom(currentZoom);
@@ -169,7 +160,6 @@ export default {
       showLightInfo,
       formatLabel,
       infoCardStyle,
-      locations,
       options: {
         mapId: "ea4d36c80703bba4",
         zoomControl: true,
@@ -183,6 +173,12 @@ export default {
       mapRef,
       zoomToLocation,
     };
+  },
+  watch: {
+    selectedLmCord(newVal) {
+      console.log(newVal);
+      this.zoomToLocation(newVal);
+    },
   },
 };
 </script>

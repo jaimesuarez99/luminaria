@@ -9,7 +9,7 @@
         <h1><slot name="title">Mapa</slot></h1>
       </template>
       <template #content>
-        <googleMap />
+        <googleMap :selectedLmCord="selectedLm" />
       </template>
     </Card>
     <Card
@@ -47,6 +47,8 @@ import googleMap from "@/components/googleMap.vue";
 
 import { ref } from "vue";
 
+const selectedLm = ref(null);
+
 const option = ref([
   { label: "Luminarias en funcionamiento", value: "working" },
   { label: "Luminarias por atender", value: "toServe" },
@@ -54,7 +56,7 @@ const option = ref([
 ]);
 
 const handleLmClicked = (event) => {
-  return event;
+  selectedLm.value = event; // Asignar las coordenadas seleccionadas
 };
 
 const selectedOption = ref(null);
