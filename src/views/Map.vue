@@ -54,7 +54,6 @@ const option = ref([
 ]);
 
 const handleLmClicked = (event) => {
-  console.log(event);
   return event;
 };
 
