@@ -133,6 +133,7 @@ export async function getDeviceInfo(device_uid) {
         };
 
         const response = await axios.get(url, { headers });
+        console.log("Raw responde:", response);
 
         const objects = response.data.objects;
         const relevantLightInfo = objects.find(object => object.object_id === 27011);

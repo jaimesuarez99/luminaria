@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="relative">
     <GMapMap
       ref="mapRef"
       :center="center"
       :zoom="zoom"
       :options="options"
       map-type-id="roadmap"
-      style="width: 100%; height: 80vh"
+      style="width: 100%; height: 74dvh"
     >
       <GMapCluster :minimumClusterSize="1" :zoomOnClick="true">
         <GMapMarker
@@ -19,12 +19,8 @@
       </GMapCluster>
     </GMapMap>
 
-    <div v-if="selectedLight" :style="infoCardStyle" class="light-info-card">
-      <h3>Light Info</h3>
-      <p v-for="(value, key) in selectedLight" :key="key">
-        <strong>{{ formatLabel(key) }}:</strong> {{ value }}
-      </p>
-      <button @click="selectedLight = null">Close</button>
+    <div v-if="selectedLight" class="absolute top-0 right-0">
+      <ligthInfo :data="selectedLight" />
     </div>
   </div>
 </template>
@@ -37,10 +33,11 @@ import {
 } from "@/utils/getSalentoDevices";
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
+import ligthInfo from "./ligthInfo.vue";
 
 export default {
   name: "googleMap",
-  props: ["selectedLmCord"],
+  props: ["selectedLmUid"],
   setup() {
     const route = useRoute();
     const mapRef = ref(null);
@@ -48,6 +45,7 @@ export default {
     const zoom = ref(15); // Add zoom as a reactive reference
     const markers = ref([]);
     const selectedLight = ref(null);
+    const selectedMarker = ref(null);
     const infoCardStyle = ref({});
 
     const setupMap = async () => {
@@ -81,8 +79,11 @@ export default {
     };
 
     const showLightInfo = async (marker) => {
+      console.log("showLightInfo", marker);
+      selectedMarker.value = Object.assign(marker);
+      zoomToLocation(marker.position);
       selectedLight.value = await getDeviceInfo(marker.device_uid);
-      setInfoCardPosition(marker.position);
+      // setInfoCardPosition(marker.position);
     };
 
     const setInfoCardPosition = (position) => {
@@ -157,6 +158,7 @@ export default {
       zoom,
       markers,
       selectedLight,
+      selectedMarker,
       showLightInfo,
       formatLabel,
       infoCardStyle,
@@ -175,28 +177,21 @@ export default {
     };
   },
   watch: {
-    selectedLmCord(newVal) {
-      console.log(newVal);
-      this.zoomToLocation(newVal);
+    selectedLmUid(uid) {
+      // this.selectedLight = null;
+      const marker = Object.assign(
+        this.markers.find((el) => el.device_uid === uid)
+      );
+      this.showLightInfo(marker);
+    },
+    selectedMarker(newVal) {
+      console.log("data:", newVal);
+      const data = newVal !== null ? newVal.device_uid : null;
+      this.$emit("onSelectedLm", data);
     },
   },
+  components: { ligthInfo },
 };
 </script>
 
-<style>
-.light-info-card {
-  background-color: #f8f8f8;
-  border-radius: 5px;
-  padding: 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  color: #5d5d5d;
-}
-
-.light-info-card h3 {
-  margin-top: 0;
-}
-
-.light-info-card button {
-  margin-top: 1rem;
-}
-</style>
+<style></style>

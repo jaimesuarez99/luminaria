@@ -15,6 +15,10 @@ import Card from 'primevue/card';
 import Button from 'primevue/button';
 import Dropdown from 'primevue/dropdown';
 import ProgressBar from 'primevue/progressbar';
+import Divider from 'primevue/divider';
+import TabView from 'primevue/tabview';
+import TabPanel from 'primevue/tabpanel';
+import Slider from 'primevue/slider';
 import VueGoogleMaps from 'vue-google-maps-community-fork'
 
 import App from './App.vue'
@@ -41,5 +45,9 @@ app.component('DataTable', DataTable);
 app.component('ColumnGroup', ColumnGroup);
 app.component('Dropdown', Dropdown);
 app.component('ProgressBar', ProgressBar);
+app.component('Divider', Divider);
+app.component('TabView', TabView);
+app.component('TabPanel', TabPanel);
+app.component('Slider', Slider);
 
 app.mount('#app')

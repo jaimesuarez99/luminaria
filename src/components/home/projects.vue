@@ -1,5 +1,6 @@
 <template>
   <router-link
+    :class="{ 'grayscale-[50%] opacity-40 pointer-events-none': disabled }"
     :to="props.href"
     class="max-w-[18rem] drop-shadow-2xl transition-all origin-center group hover:scale-105 [&_*]:border-white [&_*]:transition-all"
   >
@@ -44,6 +45,10 @@ const props = defineProps({
     type: String,
     default: "",
     required: false,
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
   },
 });
 </script>

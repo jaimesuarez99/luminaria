@@ -29,6 +29,9 @@
     right: 20%;
     bottom: 20%;
   }
+  aside .sidebar a {
+    padding-left: 0rem;
+  }
 
   aside .sidebar a.main-item:last-child {
     /* position: relative; */
@@ -128,6 +131,10 @@
     display: inline-block;
     cursor: pointer;
   }
+  aside .sidebar a {
+    /* position: relative; */
+    padding-left: 2rem;
+  }
 
   aside .sidebar a.router-link-exact-active span {
     margin-left: calc(1rem - 3px);
@@ -146,7 +153,7 @@
     width: unset;
   }
   aside .sidebar .dropdown-container a {
-    padding: 2rem;
+    /* padding: 2rem; */
   }
 
   aside .sidebar .dropdown-container a h3 {

@@ -7,6 +7,7 @@
         :title="project.title"
         :text="project.text"
         :href="project.href"
+        :disabled="project.disabled"
         :image-url="project.imageUrl"
       />
     </template>
@@ -21,30 +22,30 @@ const projectsTemplate = ref([
   {
     title: "Alumbrado Público",
     href: "/",
-    imageUrl:
-      "https://images.unsplash.com/photo-1530575786986-06744b3d4073?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageUrl: "/alumbrado-publico.jpg",
     text: "96",
+    disabled: false,
   },
   {
     title: "Calidad del aire",
     href: "/",
-    imageUrl:
-      "https://plus.unsplash.com/premium_photo-1664693751126-a8a38ad51fb5?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageUrl: "/calidad-aire.jpg",
     text: "80",
+    disabled: true,
   },
   {
     title: "Parqueo inteligente",
     href: "",
-    imageUrl:
-      "https://images.unsplash.com/photo-1545179605-1296651e9d43?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageUrl: "/parqueo-inteligente.jpg",
     text: "87",
+    disabled: true,
   },
   {
     title: "Cámaras de seguridad",
     href: "",
-    imageUrl:
-      "https://images.unsplash.com/photo-1529775983207-b68e16037a7f?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageUrl: "/camara-seguridad.jpg",
     text: "98",
+    disabled: true,
   },
 ]);
 </script>
