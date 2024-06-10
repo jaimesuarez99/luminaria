@@ -59,10 +59,15 @@ export default {
       }
 
       const devicesInfo = await getDevicesByType(1, route.params.id);
+      console.log('marker devInfo:', devicesInfo)
       if (devicesInfo) {
         markers.value = devicesInfo.map((device) => ({
           device_uid: device.device_uid,
           device_label: device.device_label,
+          device_MAC: device.MAC,
+          gateway_MAC: device.gateway_MAC,
+          device_type_id: device.device_type_id,
+          device_instance: device.device_instance,
           position: {
             lat: parseFloat(device.gps_lat),
             lng: parseFloat(device.gps_lon),
@@ -82,32 +87,9 @@ export default {
       console.log("showLightInfo", marker);
       selectedMarker.value = Object.assign(marker);
       zoomToLocation(marker.position);
-      selectedLight.value = await getDeviceInfo(marker.device_uid);
+      const deviceInfo = await getDeviceInfo(marker.device_uid);
+      selectedLight.value = {...deviceInfo, ...marker}
       // setInfoCardPosition(marker.position);
-    };
-
-    const setInfoCardPosition = (position) => {
-      const map = mapRef.value.$mapObject;
-      const scale = Math.pow(2, map.getZoom());
-      const nw = new google.maps.LatLng(
-        map.getBounds().getNorthEast().lat(),
-        map.getBounds().getSouthWest().lng()
-      );
-      const worldCoordinateNW = map.getProjection().fromLatLngToPoint(nw);
-      const worldCoordinate = map
-        .getProjection()
-        .fromLatLngToPoint(new google.maps.LatLng(position.lat, position.lng));
-      const pixelOffset = new google.maps.Point(
-        Math.floor((worldCoordinate.x - worldCoordinateNW.x) * scale),
-        Math.floor((worldCoordinate.y - worldCoordinateNW.y) * scale)
-      );
-
-      infoCardStyle.value = {
-        top: `${pixelOffset.y}px`,
-        left: `${pixelOffset.x}px`,
-        position: "absolute",
-        transform: "translate(-5%, -10%)",
-      };
     };
 
     const formatLabel = (label) => {

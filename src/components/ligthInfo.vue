@@ -7,19 +7,15 @@
       <ul class="mb-1">
         <li class="flex items-center justify-between py-1">
           <p class="text-sm">Device ID</p>
-          <p class="font-bold text-xs">3242343232532</p>
+          <p class="font-bold text-xs">{{ data.device_uid }}</p>
         </li>
         <li class="flex items-center justify-between py-1">
           <p class="text-sm">Node MAC</p>
-          <p class="font-bold text-xs">3242343232532</p>
+          <p class="font-bold text-xs">{{ data.device_MAC }}</p>
         </li>
         <li class="flex items-center justify-between py-1">
-          <p class="text-sm">Gateway Label</p>
-          <p class="font-bold text-xs">3242343232532</p>
-        </li>
-        <li class="flex items-center justify-between py-1">
-          <p class="text-sm">Gateway Name</p>
-          <p class="font-bold text-xs">3242343232532</p>
+          <p class="text-sm">Gateway MAC</p>
+          <p class="font-bold text-xs">{{ data.gateway_MAC }}</p>
         </li>
         <li class="flex items-center justify-between py-1">
           <p class="text-sm">Last data</p>

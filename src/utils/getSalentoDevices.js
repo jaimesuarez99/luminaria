@@ -124,31 +124,80 @@ export async function getDevicesByType(device_family_id = 1, zone_id = 1) {
 
 export async function getDeviceInfo(device_uid) {
     try {
+        const date = new Date(1718017204*1000);
+        console.log('DATE:', date.toLocaleString('es-CO', { timeZone: 'UTC' }))
         const token = sessionStorage.getItem('authToken');
-
         const url = `${baseURL}/data/last/devices/${device_uid}/objects?page=1`;
         console.log(url);
+        
         const headers = {
             Authorization: `Bearer ${token}`
         };
 
         const response = await axios.get(url, { headers });
-        console.log("Raw responde:", response);
+        console.log("Raw response:", response);
 
         const objects = response.data.objects;
-        const relevantLightInfo = objects.find(object => object.object_id === 27011);
-        const lightResources = relevantLightInfo.resources;
-
-        const lightStatus = {};
-
-        lightResources.forEach(resource => {
-            lightStatus[resource.name] = resource.value;
-        });
+        const relevantObjects = objects.filter(object => object.object_id === 27011 || object.object_id === 27027);
+        
+        const lightStatus = relevantObjects.reduce((acc, object) => {
+            object.resources.forEach(resource => {
+                acc[resource.name] = resource.value;
+            });
+            return acc;
+        }, {});
 
         console.log('Light Status:', lightStatus);
         return lightStatus;
     } catch (error) {
         console.error(`Error executing getDeviceInfo: ${error}`);
         return null;
+    }
+}
+
+export async function getDeviceCommandsByType (device_type_id) {
+    try {
+        const token = sessionStorage.getItem('authToken');
+
+        const url = `${baseURL}/deviceTypes/${device_type_id}/commands`;
+        const headers = {
+            Authorization: `Bearer ${token}`
+        };
+
+        const response = await axios.get(url, { headers });
+        console.log(response)
+    } catch (error) {
+        console.error(`Error executing sebas_test: ${error}`);
+        return error;
+    }
+}
+
+export async function sendCommand (cmnd_nm, gw_mac, inst_id, dev_type_id, res_id, val) {
+    try {
+        const token = sessionStorage.getItem('authToken');
+
+        const url = `${baseURL}/deviceTypes/${device_type_id}/commands`;
+        const headers = {
+            Authorization: `Bearer ${token}`
+        };
+
+        const requestBody = {
+            command_name: cmnd_nm,
+            gateway_mac: gw_mac,
+            instance_id: inst_id,
+            object_id: dev_type_id,
+            Objects: [{
+                instance_id: inst_id,
+                object_id: dev_type_id,
+                resource_id: res_id, //5851 for set dimming status
+                resource_value: val
+            }]
+        }
+
+        const response = await axios.post(url, { headers });
+        console.log(response)
+    } catch (error) {
+        console.error(`Error executing sebas_test: ${error}`);
+        return error;
     }
 }
