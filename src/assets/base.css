@@ -28,7 +28,11 @@
     var(--persian-blue-50),
     var(--persian-blue-100)
   );
-  --color-gradient-2: linear-gradient(to right, #ff9b3d, var(--color-primary));
+  --color-gradient-2: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-primary)
+  );
   --login-border-radius: 30px;
   --login-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
   --login-light-box-shadow: 0 5px 15px rgba(255, 255, 255, 0.25);

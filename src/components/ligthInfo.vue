@@ -53,7 +53,7 @@
               :isActive="activeTab === 0"
             />
           </section>
-          <sendDimmingPw />
+          <sendDimmingPw :dimmingLevel="data.light_dimming_status" />
         </TabPanel>
         <TabPanel header="Medidas">
           <p class="m-0">2</p>

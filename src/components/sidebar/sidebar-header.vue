@@ -1,12 +1,10 @@
 <template>
-  <div class="toggle">
+  <div class="toggle" @click="$router.push('/')">
     <div class="logo">
       <img src="../../assets/logo.svg" alt="Prestadores Logo" />
-      <h2>
-        <p>A</p>
-        D
-        <p>A</p>
-        PTA
+      <h2 class="text-center align-middle">
+        <p class="!text-accent">AD</p>
+        APTA
       </h2>
     </div>
     <div class="close" id="menu-close-btn" @click="closeSideBar">

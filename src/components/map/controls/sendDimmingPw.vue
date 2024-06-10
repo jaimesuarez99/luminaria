@@ -23,8 +23,13 @@
 
 <script setup>
 import { ref } from "vue";
-
-const value = ref(0);
+const props = defineProps({
+  dimmingLevel: {
+    type: Number,
+    default: 0,
+  },
+});
+const value = ref(props.dimmingLevel);
 const preDefinedDimming = ref(["0", "25", "50", "75", "100"]);
 </script>
 

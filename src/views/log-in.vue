@@ -1,5 +1,12 @@
 <template>
   <div class="log-in-body">
+    <div class="flex flex-col items-center login-logo pb-5">
+      <img src="@/assets/logo.svg" alt="Prestadores Logo" />
+      <h2 class="text-wrap">
+        <p class="!text-accent">AD</p>
+        APTA
+      </h2>
+    </div>
     <div class="login-container" id="login-container">
       <loader v-if="loaderController" style="z-index: 999999" />
       <div class="form-container sign-up">
@@ -130,4 +137,18 @@ const login = async () => {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.login-logo h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--color-secondary);
+  display: flex;
+
+  p {
+    color: var(--color-text);
+  }
+}
+.login-logo img {
+  width: 4rem;
+}
+</style>
