@@ -62,10 +62,10 @@
           <p class="m-0">3</p>
         </TabPanel>
       </TabView>
-      <p v-for="(value, key) in data" :key="key">
+      <!-- <p v-for="(value, key) in data" :key="key">
         <strong>{{ formatLabel(key) }}:</strong> {{ value }}
       </p>
-      <button>Cerrar</button>
+      <button>Cerrar</button> -->
     </template>
   </Card>
 </template>

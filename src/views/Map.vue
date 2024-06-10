@@ -5,9 +5,9 @@
       :pt="{ body: '!p-4 !gap-2' }"
       :ptOptions="{ mergeProps: true }"
     >
-      <template #title>
+      <!-- <template #title>
         <h1><slot name="title">Mapa</slot></h1>
-      </template>
+      </template> -->
       <template #content>
         <googleMap
           :selectedLmUid="selectedLmUid"
